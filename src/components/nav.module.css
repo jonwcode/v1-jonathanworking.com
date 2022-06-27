@@ -1,0 +1,18 @@
+.active {
+  color: orange;
+}
+
+nav a {
+  color: rgb(168, 168, 230);
+  text-decoration: none;
+  transition: all 0.4s;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  padding: 20px 20px 10px 20px;
+  font-weight: 700;
+}
+
+nav a:hover {
+  color: orange;
+}

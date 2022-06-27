@@ -1,0 +1,47 @@
+.header {
+  margin: auto;
+  width: 1080px;
+  height: 70px;
+  line-height: 70px;
+  overflow: hidden;
+  border-bottom: 5px solid #333333;
+}
+
+.header ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 70px;
+}
+
+.header li {
+  list-style: none;
+  margin-left: 20px;
+  line-height: 25px;
+  color: #ffffff;
+  position: relative;
+}
+
+.header li:before {
+  content: "";
+  width: 0;
+  border-bottom: 2px solid rgba(209, 209, 245, 0.212);
+  position: absolute;
+  bottom: 0;
+  transition: all 0.4s;
+}
+
+.active li:before {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid #969696;
+  position: absolute;
+  bottom: 0;
+}
+
+.header li:hover:before {
+  content: "";
+  width: 100%;
+}
