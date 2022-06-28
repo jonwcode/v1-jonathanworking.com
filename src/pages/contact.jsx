@@ -1,17 +1,18 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import Header from "../components/header";
-import Helmet from "react-helmet";
 
-const AboutMe = () => {
+const ContactMe = () => {
   return (
     <React.Fragment>
+      {" "}
       <Helmet>
-        <title>Jonathan Working - About</title>
+        <title>Jonathan Working - Contact</title>
       </Helmet>
       <Header />
-      <h1>About me</h1>
+      <h1>Contact me</h1>
     </React.Fragment>
   );
 };
 
-export default AboutMe;
+export default ContactMe;

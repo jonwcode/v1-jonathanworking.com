@@ -1,10 +1,19 @@
 .header {
   margin: auto;
-  width: 1080px;
+  max-width: 1080px;
+  width: 80;
   height: 70px;
   line-height: 70px;
   overflow: hidden;
   border-bottom: 5px solid #333333;
+  background-color: rgba(37, 37, 37, 0.584);
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: flex;
 }
 
 .header ul {
@@ -26,22 +35,16 @@
 
 .header li:before {
   content: "";
-  width: 0;
+  width: 100%;
   border-bottom: 2px solid rgba(209, 209, 245, 0.212);
   position: absolute;
   bottom: 0;
+  transform: scale(0);
   transition: all 0.4s;
-}
-
-.active li:before {
-  content: "";
-  width: 100%;
-  border-bottom: 2px solid #969696;
-  position: absolute;
-  bottom: 0;
 }
 
 .header li:hover:before {
   content: "";
   width: 100%;
+  transform: scale(1);
 }

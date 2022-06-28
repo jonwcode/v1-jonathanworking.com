@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  text-align: center;
+}
+
+.helloMyNameIs {
+  font-size: 2em;
+  color: aliceblue;
+  font-family: "Varela Round", sans-serif;
+  animation: fadeInAnimation 4s forwards;
+  text-align: left;
+  margin: 0px 0px 10px 20px;
+}
+
+.fullName {
+  visibility: hidden;
+  font-size: 4em;
+  font-weight: bold;
+  animation: fadeEffect 3s forwards 0.8s;
+  background: #e98901;
+  background: -webkit-linear-gradient(to right, #e98901, #e5c785);
+  background: linear-gradient(to right, #e98901, #e5c785);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.iBuildWebsites {
+  text-align: right;
+  visibility: hidden;
+  color: #ffffff;
+  animation: fadeEffect 3s forwards 1.2s;
+  margin: 20px 0px 0px 30px;
+  font-size: 1.5em;
+  font-family: "Varela Round", sans-serif;
+  transition: 0.3s;
+}
+
+.resumeBtn {
+  background: #e98901;
+  border: 1px solid #e98901;
+  background: -webkit-linear-gradient(to right, #e98901, #e5c785);
+  background: linear-gradient(to right, #e98901, #e5c785);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 170px;
+  transition: 0.3s;
+  margin: 20px;
+  visibility: hidden;
+  animation: fadeEffect 3s forwards 1.4s;
+}
+
+.resumeBtn:hover {
+  transform: scale(1.1);
+}
+
+.resumeBtn a {
+  text-decoration: none;
+  height: 100%;
+  padding: 10px;
+  display: inline-block;
+  width: 150px;
+  color: rgba(64, 75, 85, 1);
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+@keyframes fadeEffect {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .wrapper {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 419px) {
+  .iBuildWebsites {
+    text-align: left;
+  }
+}

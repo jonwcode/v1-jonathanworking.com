@@ -3,7 +3,7 @@
 }
 
 nav a {
-  color: rgb(168, 168, 230);
+  color: rgb(153, 153, 180);
   text-decoration: none;
   transition: all 0.4s;
   width: 100%;
@@ -15,4 +15,130 @@ nav a {
 
 nav a:hover {
   color: orange;
+}
+
+.navLeft {
+  width: 50%;
+}
+
+.navRight {
+  position: relative;
+  width: 50%;
+}
+
+.navRight li {
+  float: right;
+  margin-right: 10px;
+}
+
+.hangRight {
+  float: right;
+  position: absolute;
+  right: 0;
+}
+
+.mobileNavBtnContainer {
+  position: absolute;
+  right: 30px;
+  top: 18px;
+  display: none;
+  height: 30px;
+  width: 50px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.mobileNavBtn {
+  background-color: orange;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  height: 3px;
+  position: absolute;
+  top: 13px;
+  right: 0;
+  width: 30px;
+  transition: all 0.5s forwards;
+}
+
+.mobileNavBtn:before {
+  background-color: orange;
+  border-radius: 2px;
+  content: " ";
+  height: 3px;
+  position: absolute;
+  top: -10px;
+  width: 30px;
+}
+
+.mobileNavBtn:after {
+  background-color: orange;
+  border-radius: 2px;
+  content: " ";
+  height: 3px;
+  position: absolute;
+  top: 10px;
+  width: 30px;
+}
+
+.closeMobileBtn {
+  animation: fadeOutBar 0.3s forwards;
+}
+
+.closeMobileBtn::after {
+  transform: rotate(-45deg);
+  top: -5px;
+  animation: mobileBarTwo 200ms forwards;
+}
+
+.closeMobileBtn:before {
+  transform: rotate(45deg);
+  top: -5px;
+  animation: mobileBarOne 200ms forwards;
+}
+
+@keyframes mobileBarTwo {
+  from {
+    transform: rotate(0deg);
+    top: 10px;
+  }
+
+  to {
+    transform: rotate(45deg);
+    top: -5px;
+  }
+}
+
+@keyframes mobileBarOne {
+  from {
+    transform: rotate(0deg);
+    top: -10px;
+  }
+  to {
+    transform: rotate(-45deg);
+    top: -5px;
+  }
+}
+
+@keyframes fadeOutBar {
+  from {
+    background-color: orange;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .navLeft {
+    display: none;
+  }
+
+  .navRight {
+    display: none;
+  }
+
+  .mobileNavBtnContainer {
+    display: inline-block;
+  }
 }
