@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
-.wrapper {
+.content {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -9,6 +9,14 @@
   transform: translate(-50%, -50%);
   width: 700px;
   text-align: center;
+}
+
+.wrapper {
+  width: 100%;
+  height: calc(100vh - 127px);
+  display: block;
+  position: relative;
+  display: inline-block;
 }
 
 .helloMyNameIs {
@@ -54,8 +62,6 @@
   max-width: 170px;
   transition: 0.3s;
   margin: 20px;
-  visibility: hidden;
-  animation: fadeEffect 3s forwards 1.4s;
 }
 
 .resumeBtn:hover {
@@ -71,6 +77,25 @@
   color: rgba(64, 75, 85, 1);
   font-weight: bold;
   font-size: 1.4em;
+}
+
+.groupWrapper {
+  visibility: hidden;
+  width: 100%;
+  display: flex;
+  animation: fadeEffect 3s forwards 1.4s;
+  margin-top: 20px;
+}
+
+.gitHubSVG {
+  position: relative;
+  top: 18px;
+  left: 30px;
+  transition: 0.3s;
+}
+
+.gitHubSVG:hover {
+  transform: scale(1.1);
 }
 
 @keyframes fadeEffect {
@@ -92,7 +117,7 @@
 }
 
 @media only screen and (max-width: 700px) {
-  .wrapper {
+  .content {
     width: 95%;
   }
 }

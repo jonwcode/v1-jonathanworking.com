@@ -8,9 +8,11 @@ nav a {
   transition: all 0.4s;
   width: 100%;
   height: 100%;
+  line-height: 100%;
   display: inline-block;
   padding: 20px 20px 10px 20px;
   font-weight: 700;
+  font-size: 1.3rem;
 }
 
 nav a:hover {
@@ -21,14 +23,55 @@ nav a:hover {
   width: 50%;
 }
 
-.navRight {
+.navLeft li,
+.navRight li {
+  list-style: none;
+  line-height: 25px;
+  color: #ffffff;
   position: relative;
-  width: 50%;
+  margin-left: 20px;
+}
+
+.navLeft ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 650px;
+  height: 50px;
+}
+
+.navLeft li:before {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid rgba(209, 209, 245, 0.212);
+  position: absolute;
+  bottom: 0;
+  transform: scale(0);
+  transition: all 0.4s;
+}
+
+.navLeft li:hover:before {
+  content: "";
+  width: 100%;
+  transform: scale(1);
+}
+
+.navRight {
+  position: absolute;
+  right: 0;
+  width: 70px;
+  float: right;
 }
 
 .navRight li {
   float: right;
   margin-right: 10px;
+}
+
+.navRight li:before {
+  border-bottom: 0;
 }
 
 .hangRight {
@@ -37,64 +80,12 @@ nav a:hover {
   right: 0;
 }
 
-.mobileNavBtnContainer {
-  position: absolute;
-  right: 30px;
-  top: 18px;
-  display: none;
-  height: 30px;
-  width: 50px;
-  cursor: pointer;
-  z-index: 5;
+.gitHubSVG {
+  transition: 0.3s;
 }
 
-.mobileNavBtn {
-  background-color: orange;
-  border-radius: 2px;
-  cursor: pointer;
-  display: inline-block;
-  height: 3px;
-  position: absolute;
-  top: 13px;
-  right: 0;
-  width: 30px;
-  transition: all 0.5s forwards;
-}
-
-.mobileNavBtn:before {
-  background-color: orange;
-  border-radius: 2px;
-  content: " ";
-  height: 3px;
-  position: absolute;
-  top: -10px;
-  width: 30px;
-}
-
-.mobileNavBtn:after {
-  background-color: orange;
-  border-radius: 2px;
-  content: " ";
-  height: 3px;
-  position: absolute;
-  top: 10px;
-  width: 30px;
-}
-
-.closeMobileBtn {
-  animation: fadeOutBar 0.3s forwards;
-}
-
-.closeMobileBtn::after {
-  transform: rotate(-45deg);
-  top: -5px;
-  animation: mobileBarTwo 200ms forwards;
-}
-
-.closeMobileBtn:before {
-  transform: rotate(45deg);
-  top: -5px;
-  animation: mobileBarOne 200ms forwards;
+.gitHubSVG:hover {
+  transform: scale(1.1);
 }
 
 @keyframes mobileBarTwo {

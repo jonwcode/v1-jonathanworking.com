@@ -1,0 +1,127 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 127px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  box-sizing: border-box;
+}
+
+.contactWrapper {
+  width: 700px;
+  background-color: rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 50px 0 50px 0;
+}
+
+.inputFields {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  color: #c3c3c3;
+  font-size: 1.5em;
+  margin: 0 0 20px 10px;
+  position: relative;
+}
+
+.field:after {
+  content: "*";
+  color: red;
+  margin-left: 5px;
+}
+
+.inputFields input,
+.inputFields textarea {
+  padding: 10px;
+  font-size: 1.7em;
+  background-color: rgba(241, 241, 241, 0.724);
+  border-radius: 5px;
+  outline: none;
+  transition: 0.7s;
+  border: 3px solid #cccccc;
+  margin-bottom: 30px;
+}
+
+.inputFields textarea {
+  height: 200px;
+}
+
+.inputFields button {
+  width: 300px;
+  margin: auto;
+  background: #e98901;
+  border: 1px solid #e98901;
+  background: -webkit-linear-gradient(to right, #e98901, #e5c785);
+  background: linear-gradient(to right, #e98901, #e5c785);
+  padding: 10px;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(51, 51, 51, 1);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(51, 51, 51, 1);
+  box-shadow: 0px 0px 20px 0px rgba(51, 51, 51, 1);
+}
+
+.inputFields button:active {
+  opacity: 0.7;
+}
+
+.inputFields input:focus,
+.inputFields textarea:focus {
+  border: 3px solid orange;
+  background-color: #ffffff;
+}
+
+.headerText {
+  font-size: 3em;
+  color: #f1f1f1;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+@media only screen and (min-width: 900px) {
+  .contactWrapper {
+    width: 900px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .contactWrapper {
+    width: 98%;
+  }
+
+  .imgContainer img {
+    width: 100%;
+  }
+
+  .content {
+    width: 95%;
+  }
+
+  .aboutHeader {
+    font-size: 2em;
+  }
+
+  .inputFields button {
+    width: 250px;
+  }
+}

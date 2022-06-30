@@ -1,0 +1,18 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  text-align: center;
+}
+
+.wrapper {
+  width: 100%;
+  height: calc(100vh - 127px);
+  display: block;
+  position: relative;
+  display: inline-block;
+}

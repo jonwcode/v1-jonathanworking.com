@@ -4,7 +4,6 @@
   width: 80;
   height: 70px;
   line-height: 70px;
-  overflow: hidden;
   border-bottom: 5px solid #333333;
   background-color: rgba(37, 37, 37, 0.584);
   -webkit-border-bottom-right-radius: 5px;
@@ -14,37 +13,12 @@
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   display: flex;
-}
-
-.header ul {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 70px;
-}
-
-.header li {
-  list-style: none;
-  margin-left: 20px;
-  line-height: 25px;
-  color: #ffffff;
   position: relative;
+  box-sizing: border-box;
 }
 
-.header li:before {
-  content: "";
-  width: 100%;
-  border-bottom: 2px solid rgba(209, 209, 245, 0.212);
-  position: absolute;
-  bottom: 0;
-  transform: scale(0);
-  transition: all 0.4s;
-}
-
-.header li:hover:before {
-  content: "";
-  width: 100%;
-  transform: scale(1);
+@media only screen and (max-width: 700px) {
+  .header {
+    width: 100%;
+  }
 }

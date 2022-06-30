@@ -1,25 +1,56 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { navLeftLinks } from "../navLinks";
 import css from "./mobileNav.module.css";
 import { Link } from "react-router-dom";
-import Overlay from "./overlay";
+import Portal from "./portal";
+import { ReactComponent as LeaveSVG } from "../assets/svg/leave.svg";
 
-const MobileNav = ({ show }) => {
+const MobileNav = () => {
+  const [checkedState, setCheckedState] = useState(false);
+
+  const toggleCheckBox = () => {
+    setCheckedState((prev) => !prev);
+
+    if (!checkedState) {
+      document.body.style.cssText = "overflow:hidden";
+    } else {
+      document.body.removeAttribute("style");
+    }
+  };
+
   return (
-    <React.Fragment>
-      {show && (
-        <>
-          <Overlay />
-          <div className={css.navMenu}>
-            {navLeftLinks.map((link, indx) => (
-              <Link key={indx} to={link.path}>
+    <div id={css["main-menu"]}>
+      <input
+        type="checkbox"
+        checked={checkedState}
+        onClick={toggleCheckBox}
+        className={css.mobileCheckBox}
+      />
+      <span className={css.mobileNavBtnContainer}>
+        <span className={css.mobileNavBtn}></span>
+      </span>
+      <div onClick={toggleCheckBox} className={css.overlay}></div>
+      <div className={css.navMenu}>
+        <div className={css.linkWrapper}>
+          {navLeftLinks.map((link, indx) => (
+            <span key={indx}>
+              <Link onClick={toggleCheckBox} to={link.path}>
                 {link.name}
               </Link>
-            ))}
-          </div>
-        </>
-      )}
-    </React.Fragment>
+            </span>
+          ))}
+          <span>
+            <a
+              href="https://github.com/jonwcode"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              GitHub <LeaveSVG className={css.leaveSVG} width="25" />
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
   );
 };
 
