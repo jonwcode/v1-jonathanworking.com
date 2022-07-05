@@ -45,7 +45,10 @@ nav a:hover {
 .navLeft li:before {
   content: "";
   width: 100%;
-  border-bottom: 2px solid rgba(209, 209, 245, 0.212);
+  height: 2px;
+  background-color: rgba(64, 75, 86, 0.688);
+  border: 1px solid rgb(53, 66, 78);
+  border-radius: 30px;
   position: absolute;
   bottom: 0;
   transform: scale(0);

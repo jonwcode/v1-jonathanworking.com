@@ -67,6 +67,11 @@
   transform: rotate(45deg);
   top: -5px;
 }
+
+.initialHideMenu {
+  display: none !important;
+}
+
 .navMenu {
   position: absolute;
   visibility: hidden;

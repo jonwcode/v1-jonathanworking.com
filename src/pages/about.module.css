@@ -15,7 +15,7 @@
 
 .wrapper {
   width: 100vw;
-  min-height: calc(100vh - 127px);
+  min-height: calc(100vh - 123px);
   max-height: 100%;
   overflow: hidden;
   box-sizing: border-box;
@@ -36,8 +36,8 @@
 .imgContainer {
   width: 300px;
   padding: 10px;
-  background-color: #272727;
-  border: 1px solid rgb(27, 27, 27);
+  background-color: rgb(42, 50, 59);
+  border: 1px solid rgba(76, 89, 95, 0.587);
   border-radius: 30px;
   box-sizing: border-box;
   margin-bottom: 70px;

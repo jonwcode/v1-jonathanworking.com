@@ -17,8 +17,30 @@
   box-sizing: border-box;
 }
 
+.loggedInUser {
+  margin: auto;
+  max-width: 1080px;
+  padding: 10px;
+  color: #f1f1f1;
+  background-color: rgba(0, 0, 0, 0.425);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+.loggedInUser a {
+  color: orange;
+  text-decoration: none;
+}
+
+.loggedInUser a:hover {
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 700px) {
-  .header {
+  .header,
+  .loggedInUser {
     width: 100%;
   }
 }

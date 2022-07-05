@@ -1,17 +1,25 @@
-import React, { useState } from "react";
-import { navLeftLinks } from "../navLinks";
+import React, { useState, useContext } from "react";
+import { navLeftLinks, AuthLinks } from "../navLinks";
 import css from "./mobileNav.module.css";
 import { Link } from "react-router-dom";
-import Portal from "./portal";
 import { ReactComponent as LeaveSVG } from "../assets/svg/leave.svg";
+import userContext from "../store/user-context";
 
 const MobileNav = () => {
+  const userCtx = useContext(userContext);
+
+  const navLinks = !userCtx.loginStatus ? navLeftLinks : AuthLinks;
+
   const [checkedState, setCheckedState] = useState(false);
+  const [navMenuClasses, setNavMenuClasses] = useState(
+    `${css.navMenu} ${css.initialHideMenu}`
+  );
 
   const toggleCheckBox = () => {
     setCheckedState((prev) => !prev);
 
     if (!checkedState) {
+      setNavMenuClasses(`${css.navMenu}`);
       document.body.style.cssText = "overflow:hidden";
     } else {
       document.body.removeAttribute("style");
@@ -23,16 +31,16 @@ const MobileNav = () => {
       <input
         type="checkbox"
         checked={checkedState}
-        onClick={toggleCheckBox}
+        onChange={toggleCheckBox}
         className={css.mobileCheckBox}
       />
       <span className={css.mobileNavBtnContainer}>
         <span className={css.mobileNavBtn}></span>
       </span>
       <div onClick={toggleCheckBox} className={css.overlay}></div>
-      <div className={css.navMenu}>
+      <div className={navMenuClasses}>
         <div className={css.linkWrapper}>
-          {navLeftLinks.map((link, indx) => (
+          {navLinks.map((link, indx) => (
             <span key={indx}>
               <Link onClick={toggleCheckBox} to={link.path}>
                 {link.name}

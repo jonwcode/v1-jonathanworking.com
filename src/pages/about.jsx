@@ -16,13 +16,13 @@ const AboutMe = () => {
       <div className={css.wrapper}>
         <div className={css.content}>
           <div className={css.imgContainer}>
-            <img src={imgOfMe} />
+            <img src={imgOfMe} alt="" />
           </div>
-          <span class={css.aboutHeader}>Hi, I'm Jonathan Working</span>
-          <span class={css.about}>
+          <span className={css.aboutHeader}>Hi, I'm Jonathan Working</span>
+          <span className={css.about}>
             I'm a Full-Stack Web Developer from Kokomo, IN. I love building
             responsive web applications that people love and that ultimately
-            help others. I work primarily with Reach, PHP, MYSQL. <br />
+            help others. I work primarily with React, PHP, MYSQL. <br />
             <br />
             I'm always trying to learn new things the newest of which is Node. I
             have a background in working with and around technology starting at

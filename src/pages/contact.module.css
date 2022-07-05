@@ -6,12 +6,14 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  opacity: 0;
+  animation: fadeIn 0.7s forwards;
 }
 
 .wrapper {
   width: 100%;
   height: 100%;
-  min-height: calc(100vh - 127px);
+  min-height: calc(100vh - 123px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +24,7 @@
 
 .contactWrapper {
   width: 700px;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(64, 75, 86, 0.288);
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
@@ -96,6 +98,29 @@
   color: #f1f1f1;
   font-weight: 500;
   margin-bottom: 50px;
+  position: relative;
+}
+
+.headerText:before {
+  content: "";
+  background: #e98901;
+  border: 1px solid #e98901;
+  height: 2px;
+  background: -webkit-linear-gradient(to right, #e98901, #e5c785);
+  background: linear-gradient(to right, #e98901, #e5c785);
+  border-radius: 10px;
+  width: 170px;
+  position: absolute;
+  top: -5px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media only screen and (min-width: 900px) {

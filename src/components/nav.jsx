@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import css from "./nav.module.css";
 import { ReactComponent as GitHubSVG } from "../assets/svg/githubSVG.svg";
 import MobileNav from "./mobileNav";
-import { navLeftLinks } from "../navLinks";
+import { navLeftLinks, AuthLinks } from "../navLinks";
+import userContext from "../store/user-context";
 
 const Nav = () => {
+  const userCtx = useContext(userContext);
+
+  const navLinks = userCtx.loginStatus === false ? navLeftLinks : AuthLinks;
+
   const location = useLocation();
 
   const path = location.pathname;
@@ -20,7 +25,7 @@ const Nav = () => {
     <React.Fragment>
       <nav className={css.navLeft}>
         <ul>
-          {navLeftLinks.map((links, indx) => (
+          {navLinks.map((links, indx) => (
             <li key={indx}>
               <NavLink className={handleActiveLink} to={links.path}>
                 {links.name}
