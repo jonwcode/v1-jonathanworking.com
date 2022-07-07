@@ -13,15 +13,14 @@ const SitePreview = ({ url }) => {
 
   return (
     <div className={css.iframeContainer}>
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        <span className={coverClass}>Loading...</span>
-      </a>
+      <span className={coverClass}>Loading...</span>
       <iframe
         ref={iframe}
         onLoad={handleLoad}
         className={css.iframe}
         src={url}
         scrolling="no"
+        frameBorder="0"
       ></iframe>
     </div>
   );

@@ -1,12 +1,12 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import css from "./addProjectModal.module.css";
 import { ReactComponent as XMark } from "../assets/svg/xmark-solid.svg";
 import Editor from "./RichTextEditor/editor";
 
-const AddProjectModal = ({ toggle, setList, list }) => {
+const EditProjectModal = ({ toggle, setList, list, project }) => {
   const urlRegex =
     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
-  const [submitBtnText, setSubmitBtnText] = useState("Add Project");
+  const [submitBtnText, setSubmitBtnText] = useState("Edit Project");
 
   const reducer = (state, action) => {
     if (action.type === "url") {
@@ -100,8 +100,7 @@ const AddProjectModal = ({ toggle, setList, list }) => {
       const checkDup = list.some(
         (obj) => getHostname(obj.url) === getHostname(state.url)
       );
-
-      console.log(checkDup, "dup");
+      console.log(checkDup);
       return {
         ...state,
         projectAlreadyExisit: checkDup,
@@ -177,55 +176,40 @@ const AddProjectModal = ({ toggle, setList, list }) => {
     evt.preventDefault();
     setSubmitBtnText("Loading...");
 
-    handleErrors();
+    //handleErrors();
 
-    if (
-      state.validURL &&
-      state.validGibHub &&
-      state.validDes &&
-      !state.projectAlreadyExisit
-    ) {
-      const project = {
-        url: state.url,
-        gitHub_repo: state.gitHub_repo,
-        des: state.des,
-      };
+    if (state.validURL && state.validGibHub && state.validDes) {
+      //   const project = {
+      //     url: state.url,
+      //     gitHub_repo: state.gitHub_repo,
+      //     des: state.des,
+      //   };
+      //   await fetch("/api/addProject.php", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "appliaction/json",
+      //     },
+      //     body: JSON.stringify(project),
+      //   });
+      //console.log("Going here");
 
-      let res, tmp_id;
+      // WE NEED TO UPDATE THE SERVER STILL.... GOING TO BED
 
-      try {
-        const req = await fetch("/api/addProject.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "appliaction/json",
-          },
-          body: JSON.stringify(project),
-        });
+      console.log(list, project);
 
-        res = await req.json();
+      const projectList = [...list];
 
-        console.log(res);
-      } catch (e) {
-        console.log("Unable to submit");
-        tmp_id = Math.random();
-      }
+      const index = projectList.findIndex((arr) => arr.id === project.id);
 
-      setList((prev) => {
-        return [
-          {
-            url: state.url,
-            des: state.des,
-            gitHub_repo: state.gitHub_repo,
-            id: res ? res.id : tmp_id,
-          },
-          ...prev,
-        ];
-      });
+      projectList[index].url = state.url;
+      projectList[index].gitHub_repo = state.gitHub_repo;
+      projectList[index].des = state.des;
+
+      setList(projectList);
 
       toggle(false);
+      setSubmitBtnText("Edit Project");
     }
-
-    setSubmitBtnText("Add Project");
   };
 
   const handleChange = (evt) => {
@@ -247,19 +231,21 @@ const AddProjectModal = ({ toggle, setList, list }) => {
     dispatch({ type: "des", val: value });
   };
 
-  // useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
+  useEffect(() => {
+    dispatch({ type: "url", val: project.url });
+    dispatch({ type: "gitHub_repo", val: project.gitHub_repo });
+    dispatch({ type: "des", val: project.des });
+  }, []);
 
   return (
     <React.Fragment>
       <div onClick={toggle} className={css.overlay}></div>
       <form onSubmit={handleSubmit}>
         <div className={css.container}>
-          <span className={css.xmark} onClick={toggle}>
+          <span className={css.xmark} onClick={() => toggle(false)}>
             <XMark />
           </span>
-          <span className={css.headerText}>Add Project</span>
+          <span className={css.headerText}>Edit Project</span>
 
           <span className={css.field}>Project URL</span>
 
@@ -320,4 +306,4 @@ const AddProjectModal = ({ toggle, setList, list }) => {
   );
 };
 
-export default AddProjectModal;
+export default EditProjectModal;

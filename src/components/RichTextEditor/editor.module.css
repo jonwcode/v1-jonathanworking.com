@@ -12,6 +12,11 @@
   box-sizing: border-box;
 }
 
+.editor,
+.editorErr {
+  font-size: 1.7em;
+}
+
 .editor:focus,
 .editorErr:focus {
   border: 3px solid orange;
@@ -42,6 +47,7 @@
   cursor: pointer;
   font-size: 1em;
   padding: 5px;
+  transition: 0.3s;
 }
 
 .activeBtn {

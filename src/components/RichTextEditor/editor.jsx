@@ -6,7 +6,8 @@ const Editor = ({ html, handleChange, placeholder, desClass }) => {
   const [className, setClassName] = useState(`${css.editor}`);
   const contenteditableRef = useRef("");
 
-  const handleCmd = (cmd) => {
+  const handleCmd = (evt, cmd) => {
+    evt.preventDefault();
     document.execCommand(cmd);
 
     setTimeout(() => {
@@ -42,21 +43,21 @@ const Editor = ({ html, handleChange, placeholder, desClass }) => {
       <div className={css.cmdContainer}>
         <button
           className={
+            document.queryCommandState("bold") ? `${css.activeBtn}` : ""
+          }
+          onClick={(evt) => handleCmd(evt, "bold")}
+        >
+          Header
+        </button>
+        <button
+          className={
             document.queryCommandState("insertUnorderedList")
               ? `${css.activeBtn}`
               : ""
           }
-          onClick={() => handleCmd("insertUnorderedList")}
+          onClick={(evt) => handleCmd(evt, "insertUnorderedList")}
         >
           Unordered List
-        </button>
-        <button
-          className={
-            document.queryCommandState("bold") ? `${css.activeBtn}` : ""
-          }
-          onClick={() => handleCmd("bold")}
-        >
-          Header
         </button>
       </div>
       <ContentEditable
