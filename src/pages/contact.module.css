@@ -114,6 +114,10 @@
   top: -5px;
 }
 
+.inputErr {
+  border: 3px solid red !important;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

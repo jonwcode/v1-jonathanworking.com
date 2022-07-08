@@ -2,6 +2,7 @@ import React, { useReducer, useState, useEffect } from "react";
 import css from "./addProjectModal.module.css";
 import { ReactComponent as XMark } from "../assets/svg/xmark-solid.svg";
 import Editor from "./RichTextEditor/editor";
+import Portal from "./portal";
 
 const EditProjectModal = ({ toggle, setList, list, project }) => {
   const urlRegex =
@@ -179,21 +180,23 @@ const EditProjectModal = ({ toggle, setList, list, project }) => {
     //handleErrors();
 
     if (state.validURL && state.validGibHub && state.validDes) {
-      //   const project = {
-      //     url: state.url,
-      //     gitHub_repo: state.gitHub_repo,
-      //     des: state.des,
-      //   };
-      //   await fetch("/api/addProject.php", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "appliaction/json",
-      //     },
-      //     body: JSON.stringify(project),
-      //   });
-      //console.log("Going here");
+      const projectJson = {
+        url: state.url,
+        gitHub_repo: state.gitHub_repo,
+        des: state.des,
+        id: project.id,
+      };
+      const req = await fetch("/api/updateProject.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "appliaction/json",
+        },
+        body: JSON.stringify(projectJson),
+      });
 
-      // WE NEED TO UPDATE THE SERVER STILL.... GOING TO BED
+      const res = await req.text();
+
+      console.log(res);
 
       console.log(list, project);
 
@@ -239,69 +242,75 @@ const EditProjectModal = ({ toggle, setList, list, project }) => {
 
   return (
     <React.Fragment>
-      <div onClick={toggle} className={css.overlay}></div>
-      <form onSubmit={handleSubmit}>
-        <div className={css.container}>
-          <span className={css.xmark} onClick={() => toggle(false)}>
-            <XMark />
-          </span>
-          <span className={css.headerText}>Edit Project</span>
+      <Portal>
+        <div
+          onClick={toggle}
+          className={css.overlay}
+          style={{ height: `${document.documentElement.scrollHeight}px` }}
+        ></div>
+        <form onSubmit={handleSubmit}>
+          <div className={css.container}>
+            <span className={css.xmark} onClick={() => toggle(false)}>
+              <XMark />
+            </span>
+            <span className={css.headerText}>Edit Project</span>
 
-          <span className={css.field}>Project URL</span>
+            <span className={css.field}>Project URL</span>
 
-          <input
-            name="url"
-            onChange={handleChange}
-            onBlur={() => handleErrors("url")}
-            value={state.url}
-            type="text"
-            placeholder="Enter Project URL"
-            className={state.urlClass}
-          />
-          {state.urlErrMsg.show && (
-            <div className={css.errMsgContainer}>
-              <i className={css.exclamation}></i>
-              <span className={css.errMsg}>{state.urlErrMsg.msg}</span>
-            </div>
-          )}
+            <input
+              name="url"
+              onChange={handleChange}
+              onBlur={() => handleErrors("url")}
+              value={state.url}
+              type="text"
+              placeholder="Enter Project URL"
+              className={state.urlClass}
+            />
+            {state.urlErrMsg.show && (
+              <div className={css.errMsgContainer}>
+                <i className={css.exclamation}></i>
+                <span className={css.errMsg}>{state.urlErrMsg.msg}</span>
+              </div>
+            )}
 
-          <span className={css.field}>GitHub Repo</span>
+            <span className={css.field}>GitHub Repo</span>
 
-          <input
-            name="gitHub_repo"
-            onChange={handleChange}
-            value={state.gitHub_repo}
-            onBlur={() => handleErrors("gitHub_repo")}
-            type="text"
-            placeholder="Enter GitHub Repo URL"
-            className={state.gitHubClass}
-          />
-          {state.gitHubErrMsg && (
-            <div className={css.errMsgContainer}>
-              <i className={css.exclamation}></i>
-              <span className={css.errMsg}>Must be a valid URL</span>
-            </div>
-          )}
-          <span className={css.field}>Project Description</span>
-          <Editor
-            desClass={state.desClass}
-            handleChange={handleDesChange}
-            placeholder="Project description"
-            className={state.desClass}
-            html={state.des}
-          />
-          {/* <textarea
+            <input
+              name="gitHub_repo"
+              onChange={handleChange}
+              value={state.gitHub_repo}
+              onBlur={() => handleErrors("gitHub_repo")}
+              type="text"
+              placeholder="Enter GitHub Repo URL"
+              className={state.gitHubClass}
+            />
+            {state.gitHubErrMsg && (
+              <div className={css.errMsgContainer}>
+                <i className={css.exclamation}></i>
+                <span className={css.errMsg}>Must be a valid URL</span>
+              </div>
+            )}
+            <span className={css.field}>Project Description</span>
+            <Editor
+              desClass={state.desClass}
+              handleChange={handleDesChange}
+              placeholder="Project description"
+              className={state.desClass}
+              html={state.des}
+            />
+            {/* <textarea
             name="des"
             onChange={handleChange}
             value={state.des}
             placeholder="Project description"
             className={state.desClass}
           ></textarea> */}
-          <button className={css.addNewProjectBtn} type="submit">
-            {submitBtnText}
-          </button>
-        </div>
-      </form>
+            <button className={css.addNewProjectBtn} type="submit">
+              {submitBtnText}
+            </button>
+          </div>
+        </form>
+      </Portal>
     </React.Fragment>
   );
 };

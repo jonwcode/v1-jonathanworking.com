@@ -10,6 +10,8 @@
   margin-bottom: 30px;
   width: 100%;
   box-sizing: border-box;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 .editor,
