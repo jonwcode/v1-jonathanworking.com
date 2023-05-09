@@ -149,6 +149,13 @@
   border-radius: 3px;
 }
 
+<<<<<<< HEAD
+=======
+.desContainer li {
+  font-size: 16px !important;
+}
+
+>>>>>>> 9e44303 (Fixed a bug with the add project editor)
 .desContainer b {
   color: #ffffff;
 }

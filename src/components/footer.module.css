@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .footer {
   position: relative;
   bottom: 0;
@@ -16,3 +17,23 @@
     position: relative;
   }
 }
+=======
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.365);
+  border-top: 1px solid #1c1c1c;
+  font-style: italic;
+  padding: 15px;
+  color: orange;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+@media only screen and (max-width: 700px) {
+  .footer {
+    position: relative;
+  }
+}
+>>>>>>> 9e44303 (Fixed a bug with the add project editor)
